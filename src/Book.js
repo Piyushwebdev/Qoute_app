@@ -9,13 +9,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import Navbar from "./Navbar";
 
-const getUsers = () => {
-  let getusers = JSON.parse(localStorage.getItem("users")) || [];
-  return getusers;
-};
-
 function Book() {
-  const [users, setUsers] = useState(getUsers());
+  const [users, setUsers] = useState([]);
   const [data, setData] = useState({});
   const [tags, setTags] = useState("");
 
@@ -24,10 +19,10 @@ function Book() {
     fetchRandomQuote();
   }, [users]);
 
-  const localSet = (id) => {
-    setUsers(id);
-    console.log(users);
-  };
+  const localSet=(id)=>{
+    setUsers(current => [...current, id]);
+  }
+  
   const helper = (value) => {
     setTags(value);
     fetchRandomQuote();
