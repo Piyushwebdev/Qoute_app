@@ -8,11 +8,13 @@ import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import Navbar from "./Navbar";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const getuser =()=>{
+const getuser = () => {
   const datas = JSON.parse(localStorage.getItem("users"));
-  return datas?datas:[];
-}
+  return datas ? datas : [];
+};
 function Book() {
   const [users, setUsers] = useState(getuser);
   const [data, setData] = useState({});
@@ -23,10 +25,15 @@ function Book() {
     fetchRandomQuote();
   }, [users]);
 
-  const localSet=(data)=>{
-    setUsers(current => [...current, data]);
-  }
-  
+  const addSave = (data) => {
+    try {
+      toast("Successfuly saved to Bookmarks😍",{position: toast.POSITION.TOP_CENTER});
+      setUsers((current) => [...current, data]);
+    } catch (error) {
+      toast("Not saved 😫");
+    }
+  };
+
   const helper = (value) => {
     setTags(value);
     fetchRandomQuote();
@@ -41,6 +48,7 @@ function Book() {
       setData(quoteObject.data);
     } catch (error) {
       console.log(error);
+      toast("Something is wrong");
     }
   }
   return (
@@ -52,7 +60,8 @@ function Book() {
           <div className="box_footer">
             <p className="author">{data.author}</p>
             <div className="icon">
-              <FavoriteBorderIcon onClick={() => localSet(data)} />
+              <FavoriteBorderIcon onClick={() => addSave(data)} />
+              <ToastContainer />
             </div>
           </div>
         </div>

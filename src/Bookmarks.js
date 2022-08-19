@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import "./App.css";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 
 const getuser =()=>{
   const datas = JSON.parse(localStorage.getItem("users"));
   return datas?datas:[];
 }
 function Bookmarks() {
-
   const [items, setItems] = useState(getuser());
   const removeProduct = (index) => {
     console.log(index);
@@ -16,12 +17,14 @@ function Bookmarks() {
       current.filter((items) => items._id !== index)
     );
       console.log(items);
+      toast('Removed from Bookmarked Section🤧',{position: toast.POSITION.TOP_CENTER});
   }
   useEffect(() => {
     localStorage.setItem("users", JSON.stringify(items));
   }, [items]);
   return (
     <div>
+      <ToastContainer/>
       <Navbar />
       <div className="bookmark_bottom">
         {items.map((item) => (
