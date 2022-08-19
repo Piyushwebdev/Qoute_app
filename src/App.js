@@ -21,7 +21,7 @@ function App() {
      <BrowserRouter>
       <Routes>
         <Route path="/bookmarks" element={<Bookmarks/>} />
-        <Route path="/" element={<Book/>}/>
+        <Route path="/" element={<Book />}/>
       </Routes>
       </BrowserRouter>
     </div>

@@ -9,11 +9,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import Navbar from "./Navbar";
 
+const getuser =()=>{
+  const datas = JSON.parse(localStorage.getItem("users"));
+  return datas?datas:[];
+}
 function Book() {
-  const getuser =()=>{
-    const datas = JSON.parse(localStorage.getItem("users"));
-    return datas?[]:datas;
-  }
   const [users, setUsers] = useState(getuser);
   const [data, setData] = useState({});
   const [tags, setTags] = useState("");
@@ -26,7 +26,7 @@ function Book() {
   const localSet=(data)=>{
     setUsers(current => [...current, data]);
   }
-  console.log(users);
+  
   const helper = (value) => {
     setTags(value);
     fetchRandomQuote();
@@ -48,9 +48,9 @@ function Book() {
       <Navbar />
       <div className="home_body">
         <div className="home_body_box">
-          <div className="box_qoute">{data.content}</div>
+          <div className="box_qoute">" {data.content} "</div>
           <div className="box_footer">
-            <div className="author">{data.author}</div>
+            <p className="author">{data.author}</p>
             <div className="icon">
               <FavoriteBorderIcon onClick={() => localSet(data)} />
             </div>
