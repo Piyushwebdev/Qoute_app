@@ -39,8 +39,6 @@ function Book() {
       toast("Something is wrong");
     }
   }
-  console.log(tags);
-  console.log(typeof tags);
   const addSave = (data) => {
     try {
       toast("Successfuly saved to Bookmarks😍", {
@@ -53,9 +51,11 @@ function Book() {
   };
 
   const helper = (value) => {
-    setTags(value);
+    console.log(value);
+    setTag(value);
     fetchRandomQuote();
   };
+
   //To copy qoute
   function copyQuote(text) {
     copy(text);
