@@ -25,12 +25,16 @@
 .bookmark{
   cursor: pointer;
 }
+.head{
+
+}
 .home_body{
-  padding-block: 50px;
+  height: 90vh;
   padding-inline: 10vw;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 .bookmark_bottom{
   padding-block: 50px;
@@ -38,6 +42,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.head{
+  font-weight: 600;
 }
 .home_body_box{
   width: 600px;
@@ -60,6 +67,9 @@
   font-family: 'Courgette', cursive;
 }
 .box_footer{
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
   margin-top: 25px;
   align-items: center;
   font-size: 16px;
@@ -76,20 +86,60 @@
 .nav a.active {
   color: blue;
 }
+.dropdown-menu {
+  width: 200px;
+  height: 150px;
+  overflow-y: scroll;
+}
+.dropdown-menu::-webkit-scrollbar {
+  display: none;
+}
 
-.icon{
-
+.favicon,.copyicon{
+  margin-left: 15px;
+  margin-right: 15px;
   cursor: pointer;
 }
-.icon:hover{
+.favicon:hover{
+  color:blue;
+}
+.copyicon:hover{
   color: blue;
 }
 #dropdown-basic-button{
   margin-block:25px;
-  width: 160px;
+  width: 200px;
 }
 
 .next_button{
   width: 200px;
   border-radius: 10%;
+}
+
+@media only screen and (max-width: 750px) {
+  .home_body_box {
+    width: 400px;
+   margin-block: 25px;
+  border-radius: 50px;
+  padding-block: 30px;
+  padding-inline: 30px;
+  }
+  .box_qoute{
+    font-size: 21px;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .home_body_box {
+  width: 300px;
+  margin-block: 25px;
+  border-radius: 20px;
+  padding-block: 15px;
+  padding-inline: 15px;
+  }
+  .box_qoute{
+    font-size: 18px;
+  }
+  .box_footer{
+    font-size: 14px;
+  }
 }
